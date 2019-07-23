@@ -1,7 +1,7 @@
 package com.founder.demo.six;
 
 /**
- * 无向图
+ * 无向图的深度遍历（错误案例）
  */
 public class Graph1 {
     private int vertexSize;//顶点数量
