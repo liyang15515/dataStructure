@@ -1,5 +1,7 @@
 package com.founder.demo.six;
 
+import java.util.LinkedList;
+
 /**
  * 无向图的深度遍历（正确案例：难点）
  */
@@ -75,6 +77,43 @@ public class Graph11 {
             }
         }
         isVisited = new boolean[vertexSize];
+    }
+
+    /**@Author yanglee
+    * @Description: TODO 对外公开的广度优先遍历
+    * @Param []
+    */
+    public void broadFirstSearch(){
+        isVisited = new boolean[vertexSize];
+        for(int i =0;i<vertexSize;i++){
+            if(!isVisited[i]){
+                broadFirstSearch(i);
+            }
+        }
+    }
+
+    /**
+     * 实现广度优先遍历
+     * @param i
+     */
+    private void broadFirstSearch(int i) {
+        int u,w;
+        LinkedList<Integer> queue = new LinkedList<Integer>();
+        System.out.println("访问到："+i+"顶点");
+        isVisited[i] = true;
+        queue.add(i);//第一次把v0加到队列
+        while(!queue.isEmpty()){
+            u = (Integer)(queue.removeFirst()).intValue();
+            w = getFirstNeighbor(u);
+            while(w!=-1){
+                if(!isVisited[w]){
+                    System.out.println("访问到了："+w+"顶点");
+                    isVisited[w] = true;
+                    queue.add(w);
+                }
+                w = getNextNeighbor(u, w);
+            }
+        }
     }
 
     public int getVertexSize() {

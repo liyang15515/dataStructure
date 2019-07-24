@@ -33,5 +33,8 @@ public class GraphTest1 {
         graph11.setMatrix(matrix);
         System.out.println("无向图graph11，从顶点0开始，深度遍历：====>正确案例");
         graph11.depthFirstSearch();
+        System.out.println("===================================================");
+        System.out.println("无向图graph1，从顶点0开始，广度遍历：");
+        graph1.broadFirstSearch();
     }
 }

@@ -1,5 +1,8 @@
 package com.founder.demo.six;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 无向图的深度遍历（错误案例）
  */
@@ -61,6 +64,51 @@ public class Graph1 {
             }
         }
         return -1;
+    }
+
+    public void broadFirstSearch(){
+        isVisited = new boolean[vertexSize];
+        broadFirstSearch(0);
+    }
+
+    private void broadFirstSearch(int i){
+
+        System.out.println("访问到了："+i+"顶点");
+        isVisited[i] = true;
+        getNextNeighbors(getFirstNeighbors(i));
+
+    }
+    /**@Author yanglee
+    * @Description: TODO 广度遍历（分层遍历）
+    * @Param [index]
+    * @Return int[]
+    * @Date 2019-07-24 10:01
+    */
+    private List getFirstNeighbors(int index){
+        List<Integer> unVisitedNeighbors = new ArrayList();
+        for(int j=0;j<vertexSize;j++){
+            if(matrix[index][j] > 0 && matrix[index][j] < MAX_WEIGHT)
+               if(isVisited[j] != true){
+                   System.out.println("访问到了："+j+"顶点");
+                   isVisited[j] = true;
+                   unVisitedNeighbors.add(j);
+               }
+            }
+        return unVisitedNeighbors;
+    }
+    private void getNextNeighbors(List<Integer> unVisitedNeighbors){
+        List<Integer> result = new ArrayList();
+        if(unVisitedNeighbors != null && unVisitedNeighbors.size() > 0){
+            for(int i:unVisitedNeighbors){
+                List<Integer> temp = getFirstNeighbors(i);
+                if(temp != null && temp.size() > 0){
+                    result.addAll(temp);
+                }
+            }
+            getNextNeighbors(result);
+        }else{
+            return ;
+        }
     }
 
     public int getVertexSize() {
