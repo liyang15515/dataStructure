@@ -36,5 +36,10 @@ public class GraphTest1 {
         System.out.println("===================================================");
         System.out.println("无向图graph1，从顶点0开始，广度遍历：");
         graph1.broadFirstSearch();
+        System.out.println("===================================================");
+        Graph12 graph12 = new Graph12(9);
+        graph12.setMatrix(matrix);
+        System.out.println("无向图graph12，prim算法的测试：");
+        graph12.prim();
     }
 }
