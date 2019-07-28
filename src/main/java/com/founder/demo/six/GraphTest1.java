@@ -41,5 +41,8 @@ public class GraphTest1 {
         graph12.setMatrix(matrix);
         System.out.println("无向图graph12，prim算法的测试：");
         graph12.prim();
+        System.out.println("===================================================");
+        graph12.primByYanglee();
+
     }
 }
